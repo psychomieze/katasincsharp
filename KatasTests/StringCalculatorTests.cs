@@ -11,83 +11,66 @@ namespace KatasTests
     [TestFixture]
     public class StringCalculatorTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            stringCalculator = new StringCalculator();
-        }
-
-        private StringCalculator stringCalculator;
-
-        [Test]
-        public void AddReturnsNumberAsIntIfOneNumberGiven()
-        {
-            var returnNumber = stringCalculator.Add("3");
-            Assert.AreEqual(3, returnNumber);
-        }
-
-        [Test]
-        public void AddReturnsSumOfNumbersForNumbersSeparatedByBothNewLineAndComma()
-        {
-            int ret = stringCalculator.Add("2\n3,5");
-            Assert.AreEqual(10, ret);
-        }
-
-        [Test]
-        public void AddReturnsSumOfNumbersForNumbersSeparatedByGivenDelimiter()
-        {
-            int ret = stringCalculator.Add("//;\n1;3");
-            Assert.AreEqual(4, ret);
-        }
-
-        [Test]
-        public void AddReturnsSumOfNumbersForTwoNumber()
-        {
-            int ret = stringCalculator.Add("2,3");
-            Assert.AreEqual(5, ret);
-        }
-
         [Test]
         public void AddReturnsZeroForEmptyString()
         {
-            int returnNumber = stringCalculator.Add(string.Empty);
-            Assert.AreEqual(0, returnNumber);
+            int sum = StringCalculator.Add("");
+            Assert.AreEqual(0, sum);
         }
 
         [Test]
-        public void AddThrowsExceptionOnMultipleNegatiesAndReturnsExceptionMessageWithAllOfThem()
+        public void AddReturnsNumberAsIntForOneNumber()
         {
-            Assert.That(
-                () => stringCalculator.Add("2,-3, -5"),
-                Throws.TypeOf<Exception>().With.Message.ContainsSubstring("-3").And.Message.ContainsSubstring("-5")
-                );
+            int sum = StringCalculator.Add("3");
+            Assert.AreEqual(3, sum);
         }
 
         [Test]
-        public void AddThrowsExceptionOnNegativeNumber()
+        public void AddReturnsSumForMultipleNumbers()
         {
-            Assert.That(() => stringCalculator.Add("2,-3"), Throws.TypeOf<Exception>().With.Message.Contains("-3"));
+            int sum = StringCalculator.Add("3,5");
+            Assert.AreEqual(8, sum);
+        }
+
+        [Test]
+        public void AddAllowsNewlineAsDelimiter()
+        {
+            int sum = StringCalculator.Add("1\n2,3");
+            Assert.AreEqual(6, sum);
+        }
+
+        [Test]
+        public void AddAllowsDefinitionOfDelimiter()
+        {
+            int sum = StringCalculator.Add("//;\n1;2");
+            Assert.AreEqual(3, sum);
+        }
+
+        [Test]
+        public void AddThrowsExceptionWhenGivenNegativeNumbers() 
+        {
+            Assert.That(() => StringCalculator.Add("3,-3,-4"), Throws.Exception.With.Message.ContainsSubstring("-3,-4"));
         }
 
         [Test]
         public void AddIgnoresNumbersBiggerThanThousand()
         {
-            int returnNumber = stringCalculator.Add("2,1001");
-            Assert.AreEqual(2, returnNumber);
+            int sum = StringCalculator.Add("3,1001");
+            Assert.AreEqual(3, sum);
         }
 
         [Test]
         public void AddAllowsDelimitersOfAnyLength()
         {
-            int returnNumber = stringCalculator.Add("//[***]\n1***2***3");
-            Assert.AreEqual(6, returnNumber);
+            int sum = StringCalculator.Add("//[***]\n1***2***3");
+            Assert.AreEqual(6, sum);
         }
 
         [Test]
         public void AddAllowsMultipleDelimiters()
         {
-            int returnNumber = stringCalculator.Add("//[**][...]\n1**2...3");
-            Assert.AreEqual(6, returnNumber);
+            int sum = StringCalculator.Add("//[**][%]\n1**2%3");
+            Assert.AreEqual(6, sum);
         }
     }
 }
