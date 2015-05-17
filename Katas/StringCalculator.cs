@@ -12,7 +12,6 @@ namespace Katas
     {
         public static int Add(string numberString)
         {
-            string delimiter = ",";
             if (numberString == string.Empty)
             {
                 return 0;
@@ -30,7 +29,7 @@ namespace Katas
             }
             else
             {
-                delimiterStrings.Add(delimiter);
+                delimiterStrings.Add(",");
             }
             delimiterStrings.Add("\n");
             string[] numbers = numberString.Split(delimiterStrings.ToArray(), StringSplitOptions.None);
