@@ -34,7 +34,7 @@ namespace Katas
             delimiterStrings.Add("\n");
             string[] numbers = numberString.Split(delimiterStrings.ToArray(), StringSplitOptions.None);
             string negatives = string.Join(",",
-                numbers.Select(int.Parse).Where(i => i < 0).Select(s => s.ToString()).ToArray());
+                (from i in numbers.Select(int.Parse) where i < 0 select i.ToString()).ToArray());
             if (negatives.Length > 0)
             {
                 throw new Exception("Not allowed" + negatives);
