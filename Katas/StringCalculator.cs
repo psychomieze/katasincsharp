@@ -1,45 +1,102 @@
 ﻿#region
 
+#endregion
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-#endregion
+using System.Text.RegularExpressions;
+using log4net;
 
 namespace Katas
 {
     public class StringCalculator
     {
-        public static int Add(string numberString)
+        private ILog Log { get; }
+        private IWebservice Webservice { get; }
+
+        public StringCalculator(IWebservice webservice, ILog log = null)
         {
-            if (numberString == string.Empty)
+            Log = log ?? LogManager.GetLogger(typeof (StringCalculator));
+            Webservice = webservice;
+        }
+
+
+        public int Add(string numbersString)
+        {
+            if (string.IsNullOrEmpty(numbersString)) return 0;
+            string[] numbers = GetNumbers(numbersString);
+            int sum = SumIfAllArePositive(numbers);
+            LogResult(sum);
+            return sum;
+        }
+
+        private string[] GetNumbers(string numbersString)
+        {
+            string[] delimiters = HandleDelimiters(ref numbersString);
+            return numbersString.Split(delimiters, StringSplitOptions.None);
+        }
+
+        private void LogResult(int sum)
+        {
+            try
             {
-                return 0;
+                Log.Info(sum.ToString());
             }
-            List<string> delimiterStrings = new List<string>();
-            if (numberString.StartsWith("//"))
+            catch (Exception e)
             {
-                string[] tempDelimiters = numberString.Split(new[] {'\n'}, 2)
-                    .First()
-                    .Split(new[] {"]["}, StringSplitOptions.None);
-                string[] replacementStrings = {"/", "\n", "[", "]"};
-                delimiterStrings.AddRange(
-                    tempDelimiters.Select(s => replacementStrings.Aggregate(s, (c1, c2) => c1.Replace(c2, string.Empty))));
-                numberString = numberString.Split(new[] {'\n'}, 2).Last();
+                Webservice.Notify(e.Message);
+            }
+        }
+
+        private string[] HandleDelimiters(ref string numbersString)
+        {
+            string[] delimiters = new[] {"\n"};
+            Match match = Regex.Match(numbersString, @"^//(.*?)\n");
+            if (match.Success)
+            {
+                IEnumerable<string> additionalDelimiters = GetAdditionalDelimitersFromMatch(match);
+                delimiters = delimiters.Concat(additionalDelimiters).ToArray();
+                numbersString = numbersString.Substring(match.Groups[0].Length);
             }
             else
             {
-                delimiterStrings.Add(",");
+                // default delimiter
+                delimiters = delimiters.Concat(new string[] {","}).ToArray();
             }
-            delimiterStrings.Add("\n");
-            string[] numbers = numberString.Split(delimiterStrings.ToArray(), StringSplitOptions.None);
-            string negatives = string.Join(",",
-                (from i in numbers.Select(int.Parse) where i < 0 select i.ToString()).ToArray());
-            if (negatives.Length > 0)
+            return delimiters;
+        }
+
+        private IEnumerable<string> GetAdditionalDelimitersFromMatch(Match match)
+        {
+            string[] delimiters;
+            string matchString = match.Groups[match.Groups.Count - 1].Value;
+            matchString = matchString.Trim(new[] {'[', ']'});
+            delimiters = matchString.Split(new[] {"]["}, StringSplitOptions.None);
+            return delimiters;
+        }
+
+        private static int SumIfAllArePositive(string[] numbers)
+        {
+            List<int> negatives = new List<int>();
+            int sum = 0;
+            foreach (string numberAsString in numbers)
             {
-                throw new Exception("Not allowed" + negatives);
+                int number = int.Parse(numberAsString);
+                if (number < 0)
+                {
+                    negatives.Add(number);
+                }
+                else if (number < 1001)
+                {
+                    sum += number;
+                }
             }
-            return numbers.Select(int.Parse).Where(i => i < 1001).Sum();
+            if (negatives.Any())
+            {
+                throw new Exception(string.Format("Not allowed: {0}", string.Join(",", negatives)));
+            }
+            return sum;
         }
     }
 }

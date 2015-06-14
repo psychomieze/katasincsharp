@@ -69,5 +69,33 @@ namespace KatasTests
             double price = PotterPricing.GetPrice(new[] {0, 0, 1});
             Assert.AreEqual(8 + (8*2*0.95), price);
         }
+
+        [Test]
+        public void BuyTwoTimesTwoSameBooksCostsThirtyEuroFourtyCent()
+        {
+            double price = PotterPricing.GetPrice(new[] {0, 0, 1, 1});
+            Assert.AreEqual(2*8*2*0.95, price);
+        }
+
+        [Test]
+        public void BuyTwoTimesTwoSameBooksAndTwoDifferentBooksCostsFourtyEuroEightyCent()
+        {
+            double price = PotterPricing.GetPrice(new[] { 0, 0, 1, 2, 2, 3 });
+            Assert.AreEqual((8 * 4 * 0.8) + (8 * 2 * 0.95), price);
+        }
+
+        [Test]
+        public void BuyTwoSameBooksAndFourDifferentBooksCostsThirtyEightEuro()
+        {
+            double price = PotterPricing.GetPrice(new[] { 0, 1, 1, 2, 3, 4 });
+            Assert.AreEqual(8 + (8 * 5 * 0.75), price);
+        }
+
+        [Test]
+        public void BuyThreeTimesTwoSameBooksAndTwoDifferentBooks()
+        {
+            double price = PotterPricing.GetPrice(new[] {0, 0, 1, 1, 2, 2, 3, 4});
+            Assert.AreEqual(2 * (8 * 4 * 0.8), price);
+        }
     }
 }
