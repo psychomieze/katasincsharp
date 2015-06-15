@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Katas;
+﻿using Katas;
 using NUnit.Framework;
 
 namespace KatasTests
@@ -92,8 +87,8 @@ namespace KatasTests
         }
 
         [Test]
-        public void BuyThreeTimesTwoSameBooksAndTwoDifferentBooks()
-        {
+        public void BuyTwoTimesFourDifferentBooks()
+        {  
             double price = PotterPricing.GetPrice(new[] {0, 0, 1, 1, 2, 2, 3, 4});
             Assert.AreEqual(2 * (8 * 4 * 0.8), price);
         }

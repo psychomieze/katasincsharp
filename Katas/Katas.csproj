@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CodeWars\AreTheySame.cs" />
     <Compile Include="CodeWars\BouncingBall.cs" />
+    <Compile Include="CodeWars\IqTest.cs" />
     <Compile Include="CodeWars\MultiplesOfThreeAndFive.cs" />
     <Compile Include="CodeWars\DigPow.cs" />
     <Compile Include="FizzBuzz.cs" />

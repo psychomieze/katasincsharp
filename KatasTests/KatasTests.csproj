@@ -55,6 +55,7 @@
     <Compile Include="CodeWars\AreTheySameTests.cs" />
     <Compile Include="CodeWars\BouncingBallTests.cs" />
     <Compile Include="CodeWars\DigPowTests.cs" />
+    <Compile Include="CodeWars\IqTestTests.cs" />
     <Compile Include="CodeWars\MultiplesOfThreeAndFiveTests.cs" />
     <Compile Include="PotterPricingTests.cs" />
     <Compile Include="FizzBuzzTests.cs" />
