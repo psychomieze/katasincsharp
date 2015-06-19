@@ -57,6 +57,7 @@
     <Compile Include="CodeWars\DigPowTests.cs" />
     <Compile Include="CodeWars\IqTestTests.cs" />
     <Compile Include="CodeWars\MultiplesOfThreeAndFiveTests.cs" />
+    <Compile Include="CodeWars\NoobifierTests.cs" />
     <Compile Include="PotterPricingTests.cs" />
     <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

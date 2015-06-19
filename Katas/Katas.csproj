@@ -53,6 +53,7 @@
     <Compile Include="CodeWars\IqTest.cs" />
     <Compile Include="CodeWars\MultiplesOfThreeAndFive.cs" />
     <Compile Include="CodeWars\DigPow.cs" />
+    <Compile Include="CodeWars\Noobifier.cs" />
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="IWebservice.cs" />
     <Compile Include="PotterPricing.cs" />
