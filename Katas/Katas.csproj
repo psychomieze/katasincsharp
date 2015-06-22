@@ -48,14 +48,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeWars\AgeFromDob.cs" />
     <Compile Include="CodeWars\AreTheySame.cs" />
     <Compile Include="CodeWars\BouncingBall.cs" />
+    <Compile Include="CodeWars\DoubleCola.cs" />
+    <Compile Include="CodeWars\GreedIsGood.cs" />
     <Compile Include="CodeWars\IqTest.cs" />
     <Compile Include="CodeWars\MultiplesOfThreeAndFive.cs" />
     <Compile Include="CodeWars\DigPow.cs" />
     <Compile Include="CodeWars\Noobifier.cs" />
+    <Compile Include="CodeWars\PlusOneArray.cs" />
+    <Compile Include="CodeWars\SharpNumber.cs" />
+    <Compile Include="CodeWars\StringSums.cs" />
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="IWebservice.cs" />
+    <Compile Include="Noobifier.cs" />
     <Compile Include="PotterPricing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringCalculator.cs" />

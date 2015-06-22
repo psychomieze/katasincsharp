@@ -25,8 +25,8 @@ namespace KatasTests
             Assert.AreEqual(8, price);
         }
 
-        [TestCase(new int[] {0,0}, 16)]
-        [TestCase(new int[] {1,1,1}, 24)]
+        [TestCase(new int[] {0, 0}, 16)]
+        [TestCase(new int[] {1, 1, 1}, 24)]
         public void BuySameBookTwiceCostsSixteenEuro(int[] books, double expected)
         {
             double price = PotterPricing.GetPrice(books);
@@ -39,18 +39,21 @@ namespace KatasTests
             double price = PotterPricing.GetPrice(new[] {0, 1});
             Assert.AreEqual(8*2*0.95, price);
         }
+
         [Test]
         public void BuyThreeDifferentBooksYieldsTenPercentDiscount()
         {
             double price = PotterPricing.GetPrice(new[] {0, 2, 4});
             Assert.AreEqual(8*3*0.9, price);
         }
+
         [Test]
         public void BuyFourDifferentBooksYieldsTwentyPercentDiscount()
         {
             double price = PotterPricing.GetPrice(new[] {0, 1, 2, 4});
             Assert.AreEqual(8*4*0.8, price);
         }
+
         [Test]
         public void BuyFiveDifferentBooksYieldsTwentyFivePercentDiscount()
         {
@@ -75,22 +78,30 @@ namespace KatasTests
         [Test]
         public void BuyTwoTimesTwoSameBooksAndTwoDifferentBooksCostsFourtyEuroEightyCent()
         {
-            double price = PotterPricing.GetPrice(new[] { 0, 0, 1, 2, 2, 3 });
-            Assert.AreEqual((8 * 4 * 0.8) + (8 * 2 * 0.95), price);
+            double price = PotterPricing.GetPrice(new[] {0, 0, 1, 2, 2, 3});
+            Assert.AreEqual((8*4*0.8) + (8*2*0.95), price);
         }
 
         [Test]
         public void BuyTwoSameBooksAndFourDifferentBooksCostsThirtyEightEuro()
         {
-            double price = PotterPricing.GetPrice(new[] { 0, 1, 1, 2, 3, 4 });
-            Assert.AreEqual(8 + (8 * 5 * 0.75), price);
+            double price = PotterPricing.GetPrice(new[] {0, 1, 1, 2, 3, 4});
+            Assert.AreEqual(8 + (8*5*0.75), price);
         }
 
         [Test]
         public void BuyTwoTimesFourDifferentBooks()
-        {  
+        {
             double price = PotterPricing.GetPrice(new[] {0, 0, 1, 1, 2, 2, 3, 4});
-            Assert.AreEqual(2 * (8 * 4 * 0.8), price);
+            Assert.AreEqual(2*(8*4*0.8), price);
+        }
+
+        [Test]
+        public void BuyManyBooks()
+        {
+            int[] books = new[] {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4};
+            double price = PotterPricing.GetPrice(books);
+            Assert.AreEqual(3 * (8 * 5 * 0.75) + 2 * (8 * 4 * 0.8), price);
         }
     }
 }
