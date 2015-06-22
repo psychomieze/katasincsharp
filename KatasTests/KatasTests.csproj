@@ -57,10 +57,13 @@
     <Compile Include="CodeWars\BouncingBallTests.cs" />
     <Compile Include="CodeWars\DigPowTests.cs" />
     <Compile Include="CodeWars\DoubleColaTests.cs" />
+    <Compile Include="CodeWars\FormatCurrencyTests.cs" />
+    <Compile Include="CodeWars\GoodAndEvilTests.cs" />
     <Compile Include="CodeWars\GreedIsGoodTests.cs" />
     <Compile Include="CodeWars\IqTestTests.cs" />
     <Compile Include="CodeWars\MultiplesOfThreeAndFiveTests.cs" />
     <Compile Include="CodeWars\NoobifierTests.cs" />
+    <Compile Include="CodeWars\PatternCompletionTests.cs" />
     <Compile Include="CodeWars\PlusOneArrayTests.cs" />
     <Compile Include="CodeWars\SharpNumberTests.cs" />
     <Compile Include="CodeWars\StringSumsTests.cs" />

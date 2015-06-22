@@ -52,11 +52,14 @@
     <Compile Include="CodeWars\AreTheySame.cs" />
     <Compile Include="CodeWars\BouncingBall.cs" />
     <Compile Include="CodeWars\DoubleCola.cs" />
+    <Compile Include="CodeWars\FormatCurrency.cs" />
+    <Compile Include="CodeWars\GoodAndEvil.cs" />
     <Compile Include="CodeWars\GreedIsGood.cs" />
     <Compile Include="CodeWars\IqTest.cs" />
     <Compile Include="CodeWars\MultiplesOfThreeAndFive.cs" />
     <Compile Include="CodeWars\DigPow.cs" />
     <Compile Include="CodeWars\Noobifier.cs" />
+    <Compile Include="CodeWars\PatternCompletion.cs" />
     <Compile Include="CodeWars\PlusOneArray.cs" />
     <Compile Include="CodeWars\SharpNumber.cs" />
     <Compile Include="CodeWars\StringSums.cs" />
