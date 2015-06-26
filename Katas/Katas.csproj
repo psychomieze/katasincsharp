@@ -48,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaesarCipher.cs" />
     <Compile Include="CodeWars\AgeFromDob.cs" />
     <Compile Include="CodeWars\AreTheySame.cs" />
+    <Compile Include="CodeWars\BackwardsPrimes.cs" />
     <Compile Include="CodeWars\BouncingBall.cs" />
     <Compile Include="CodeWars\DoubleCola.cs" />
     <Compile Include="CodeWars\FormatCurrency.cs" />
@@ -59,10 +61,12 @@
     <Compile Include="CodeWars\MultiplesOfThreeAndFive.cs" />
     <Compile Include="CodeWars\DigPow.cs" />
     <Compile Include="CodeWars\Noobifier.cs" />
+    <Compile Include="CodeWars\PalindromeChain.cs" />
     <Compile Include="CodeWars\PatternCompletion.cs" />
     <Compile Include="CodeWars\PlusOneArray.cs" />
     <Compile Include="CodeWars\SharpNumber.cs" />
     <Compile Include="CodeWars\StringSums.cs" />
+    <Compile Include="CodeWars\TwistedSum.cs" />
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="IWebservice.cs" />
     <Compile Include="Noobifier.cs" />
